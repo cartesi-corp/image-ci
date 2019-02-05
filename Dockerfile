@@ -11,11 +11,25 @@ ENV BASE /opt/riscv
 RUN \
     apt-get update && \
     apt-get install --no-install-recommends -y \
-        unzip libfdt-dev ca-certificates \
+        unzip ca-certificates \
+        bison flex\
         build-essential autoconf automake libtool autotools-dev \
         git make pkg-config vim libboost-dev libreadline-dev socat wget && \
     mkdir -p $BASE && \
     rm -rf /var/lib/apt/lists/*
+
+# Install libfdt
+# ----------------------------------------------------
+RUN \
+    NPROC=$(nproc) && \
+    cd $BASE && \
+    git clone https://github.com/cartesi/dtc.git && \
+    cd dtc && \
+    git checkout cartesi && \
+    make -j$NPROC NO_PYTHON=1 PREFIX=/usr/local install && \
+    cd $BASE && \
+    \rm -rf $BASE/dtc
+
 
 # Install cryptopp
 # ----------------------------------------------------
