@@ -1,0 +1,13 @@
+- Create a Personal Access Token, in case of using 2FA for gitlab account
+
+- Login docker to gitlab docker registry
+$ docker login registry.gitlab.com -u <USER_NAME> -p <PERSONAL_ACCESS_TOKEN_CREATED_IN_PREVIOUS_STEP_OR_PASSWORD_IF_NOT_USING_2FA>
+
+- Tag the cartesi/image-ci image with the expected format by gitlab registry
+$ docker tag cartesi/image-ci:latest  registry.gitlab.com/cartesi/core/cartesi/image-ci:latest
+
+-Push it
+$ docker push registry.gitlab.com/cartesi/core/cartesi/image-ci
+
+
+
