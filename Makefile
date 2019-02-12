@@ -12,7 +12,7 @@ push: build
 pull:
 	docker pull $(IMG)
 
-run: build
+run:
 	docker run -it --rm $(IMG)
 
 share:
