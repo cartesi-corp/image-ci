@@ -78,5 +78,12 @@ RUN \
     ln -s /usr/local/bin/luapp5.3 /usr/local/bin/luapp && \
     \rm -rf $BASE/lua-5.3.5
 
+# Install further dependencies
+# ----------------------------------------------------
+
+RUN \
+    apt-get update && \
+    apt-get install -y libboost-program-options-dev
+
 USER root
 WORKDIR ~
