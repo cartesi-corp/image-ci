@@ -14,7 +14,7 @@ RUN \
         unzip ca-certificates \
         bison flex\
         build-essential autoconf automake libtool autotools-dev \
-        git make pkg-config vim libboost-dev libreadline-dev socat wget && \
+        git make pkg-config vim libboost-dev libboost-program-options-dev libreadline-dev socat wget && \
     mkdir -p $BASE && \
     rm -rf /var/lib/apt/lists/*
 
@@ -63,7 +63,7 @@ RUN \
 # Install Lua 5.3.5 compiled for C++
 # ----------------------------------------------------
 COPY luapp.patch $BASE
-COPY luapp53.pc /usr/local/lib/pkgconfig
+COPY luapp53.pc /usr/local/lib/pkgconfig/
 
 RUN \
     NPROC=$(nproc) && \
