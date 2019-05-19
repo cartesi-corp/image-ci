@@ -16,4 +16,4 @@ run:
 	docker run -it --rm $(IMG)
 
 share:
-	docker run -it --rm -v `pwd`:$(BASE)/host $(IMG)
+	docker run -it --rm -v /Users/diego/shared/cartesi/core/src/emulator:$(BASE)/host $(IMG)
